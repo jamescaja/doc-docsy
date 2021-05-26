@@ -13,7 +13,7 @@ intro text CHANGING THIS
 
 ### Create Service Account and Key
 
-```command
+```sh
 gcloud iam service-accounts create sa-dsa-automation \ 
 --display-name=sa-dsa-automation \
 --description="SA account for DSA automation tasks"
@@ -25,7 +25,7 @@ sa-dsa-automation.json
 
 ### Assign IAM roles to Service Account
 
-```command
+```sh
 gcloud projects add-iam-policy-binding exp-dsa-dev \
 --member="serviceAccount:sa-dsa-automation@exp-dsa-dev.iam.gserviceaccount.com" \
 --role="roles/bigquery.dataEditor"

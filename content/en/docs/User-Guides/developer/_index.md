@@ -1,6 +1,6 @@
 ---
 title: "Developer Guides"
-linkTitle: "For Developers"
+linkTitle: "for Developers"
 weight: 3
 description: >
   Guides important to Application Software Engineers

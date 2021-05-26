@@ -1,6 +1,6 @@
 ---
 title: "User Guides"
-linkTitle: "For everyone"
+linkTitle: "for Everyone"
 weight: 4
 description: >
   Stuff for all audiences.

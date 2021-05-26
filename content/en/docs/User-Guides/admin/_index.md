@@ -1,6 +1,6 @@
 ---
 title: "Administrator Guides"
-linkTitle: "For Admins"
+linkTitle: "for Admins"
 weight: 2
 description: >
     Guides important to DevOps Engineers and Administrators
