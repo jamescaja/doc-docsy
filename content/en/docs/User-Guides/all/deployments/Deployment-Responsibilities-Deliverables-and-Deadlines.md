@@ -41,7 +41,7 @@ Regardless of which review forum is used, the process must meet these deliverabl
 |---|---|
 |Dev Team|Fully approved Pull Requests for all planned code deployments.|
 |Dev Team|Create CRQ for each installation.|
-|Dev Team|Provide necessary documentation (business justification, test results).  This documentation may be attached directly to the CRQ, or to the Jira Change ticket.  If attached to the Jira ticket, please add the Jira url link to the CRQ.|
+|Dev Team|Provide necessary documentation (business justification, test results).  This documentation **MUST** be attached directly to the CRQ (Mandatory as of 6/2/2021).|
 
 ### Due: **Tuesday after approved pull request(s)**
 
