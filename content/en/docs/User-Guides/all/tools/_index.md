@@ -1,11 +1,13 @@
 ---
-title: "Deployment Instructions"
-linkTitle: "Deployments"
-weight: 2
+title: "Tools and Utilities"
+linkTitle: "Tools"
+weight: 4
 description: >
-   Instructions for CDH and FSR deployments. 
+  Tools and commands.
 ---
 
 {{% pageinfo %}}
 This is a placeholder page that shows you how to use this template site.
 {{% /pageinfo %}}
+
+
