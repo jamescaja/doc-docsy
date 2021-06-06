@@ -2,6 +2,11 @@
 title: Google IAM Guide
 weight: 10
 ---
+
+{{% pageinfo %}}
+**Summary** - All about how we do permissioning in GCP.
+{{% /pageinfo %}}
+
 ## Overview
 
 Making Google Cloud (GCP) computing resources and applications available through the Cloud console allows people to do meaningful work.
