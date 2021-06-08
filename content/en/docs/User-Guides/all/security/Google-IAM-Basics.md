@@ -1,10 +1,10 @@
 ---
-title: Google IAM Guide
+title: Google IAM Basics
 weight: 10
 ---
 
 {{% pageinfo %}}
-**Summary** - All about how we do permissioning in GCP.
+**Summary** - Basics about IAM security.
 {{% /pageinfo %}}
 
 ## Overview
@@ -73,16 +73,67 @@ However, they relate in these ways:
 
 With that background, let's see how we can enable access to GCP resources.
 
-
-Next, let's extend this concept to create configurations that simplify access management administration.
-
-## Beyond Basics
+> For the best education, we encourage you to read the full guide.  But if you're pressed for time or truly impatient, see the [Summarized Process](#the-summarized-process).
 
 ### Gaining Access to GCP Resources
 
 By default, Google users have little to no access to anything in GCP.
 
-> For a refresher on a common approach to grouping users and permissions, see [Google IAM Basics]({{< relref "Google-IAM-Basics.md" >}})
+> The concept of users, groups, roles, and permissions below are similar to other computing systems.  If this is already familiar to you, skip down to [Beyond Basics](#beyond-basics).
+
+#### User -> Permission
+
+To do useful work, users must have permission to use a resource.
+
+![base-user-permission.png](/images/base-user-permission.png)
+
+A user account can have multiple granted permissions.  Here's what that might look like:
+
+![example-user-permission.png](/images/example-user-permission.png)
+
+Pretty ugly!  Think how bad it would look with hundreds of users having access to over three thousand available permissions.
+
+This quickly becomes unmanageable. And Google agrees because they don’t allow direct permission grants to user accounts.
+
+#### User -> Role -> Permission
+
+Their solution involves grouping commonly used permissions together in a **role**.
+
+![base-user-role-permission.png](/images/base-user-role-permission.png)
+
+The user is granted a single role instead of multiple permissions.   This simplifies our example:
+
+![example-user-role-permission.png](/images/example-user-role-permission.png)
+
+This looks better, but what if you have multiple users needing the same permissions? You can grant each user the same roles, but that can get tedious if you have many users.
+
+Is there a way to simplify this task?  Of course there is!  
+
+#### User -> Group -> Role -> Permission
+
+If a set of users need the same permissions, wouldn’t it be nice to do a mass role assignment to grant the same role to each user in a single step?
+
+Google thought so. They provide a **group** construct to combine multiple user accounts into a single logical unit. Similar to how permissions are assigned to a role, we can grant a user account membership in a group.
+
+Then granting a role to each group member is simply a matter of granting that role to the group.
+
+![base-user-group-role-permission.png](/images/base-user-group-role-permission.png)
+
+Our diagram has become a set of relationships between user, group, role, and permission.
+
+![example-user-group-role-permission.png](/images/example-user-group-role-permission.png)
+
+> Groups may have multiple roles.  But in this concepts guide, we'll keep it simple by only showing a one-to-one relationship.
+
+A best practice for granting permissions to users is to use groups and roles to abstract away the details. This simplifies security administration.
+
+Roles can be granted directly to user accounts, but this is highly discouraged. [SAY WHY...]
+
+![summary-user-group-role-permission.png](/images/summary-user-group-role-permission.png)
+
+Next, let's extend this concept to create configurations that simplify access management administration.
+
+## Beyond Basics
 
 ### Nested Groups
 
@@ -107,6 +158,10 @@ Our authorization pipeline strings together two group types - Member and Compone
 ![exploded-user-nestedgroup-role-permission-2.png](/images/exploded-user-nestedgroup-role-permission-2.png)
 
 Let's learn more about these group types, working backwards from the **Permissions** toward the **Users**.  Later we'll talk about how they fit together to enable the authorization flow.
+
+> We preface our actual group names with **dlg-gcp-** to mirror Active Directory groups.
+> 
+> Here we'll omit this prefix for clarity.
 
 #### Component Groups
 
@@ -140,9 +195,9 @@ A few examples:
 
 |Project Name|Component|Group Access Level|Group Name|
 | ----------- | ----------- | ----------- | ----------- |
-|fsr-dev|Storage|poweruser|**fsr-dev-storage-poweruser**|
-|stylist-prod|Cloud SQL|admin|**stylist-prod-cloudsql-admin**|
-|cdh-dev|BigQuery|user|**cdh-dev-bq-user**|
+|fsr-dev|Storage|poweruser|fsr-dev-storage-poweruser|
+|stylist-prod|Cloud SQL|admin|stylist-prod-cloudsql-admin|
+|cdh-dev|BigQuery|user|cdh-dev-bq-user|
 
 > For the standard component labels used in the group name, see the [Google IAM Quick Reference]({{< relref "Google-IAM-Quick-Reference.md#components" >}})
 
@@ -291,3 +346,5 @@ Conclusion goes here.
 ## See Also
 
 [Google IAM Quick Reference]({{< relref "Google-IAM-Quick-Reference.md" >}})
+
+jim - jamescaja
